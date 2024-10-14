@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 # Função para carregar os dados do CSV
-@st.cache
+@st.cache_data
 def load_data():
     file_path = "data/supermarket_sales.csv"  # Substitua pelo caminho correto do seu arquivo
     data = pd.read_csv(file_path)
