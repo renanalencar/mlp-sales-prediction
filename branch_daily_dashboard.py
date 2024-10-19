@@ -10,7 +10,7 @@ from tensorflow.keras.layers import LSTM, Dense
 import numpy as np
 
 # Load and preprocess your data
-sales_data_path = "data\supermarket_sales.csv"  # Update with your actual path
+sales_data_path = "data/supermarket_sales.csv"  # Update with your actual path
 sales_data = pd.read_csv(sales_data_path)
 sales_data["Date"] = pd.to_datetime(sales_data["Date"], format="%m/%d/%Y")
 
