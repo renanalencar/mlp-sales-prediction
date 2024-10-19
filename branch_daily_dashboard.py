@@ -20,10 +20,10 @@ branch_sales = (
 )
 
 # Streamlit app title
-st.title("Sales Prediction Dashboard")
+st.title("Daily Sales Prediction Dashboard")
 
 # Display data grid
-st.write("### Sales Data")
+st.write("### Daily Sales Data")
 st.dataframe(branch_sales)
 
 
@@ -77,7 +77,12 @@ def mlp_model(branch, days_to_predict):
     mlp_model.fit(X_train_scaled, y_train)
 
     predictions = mlp_model.predict(X_test_scaled[:days_to_predict])
-    return predictions
+
+    # Calculate MAE and Accuracy
+    mae = mean_absolute_error(y_test[:days_to_predict], predictions)
+    accuracy = 100 - (mae / y_test[:days_to_predict].mean() * 100)
+
+    return predictions, mae, accuracy
 
 
 def lstm_model(branch, days_to_predict):
@@ -108,8 +113,14 @@ def lstm_model(branch, days_to_predict):
     lstm_model.fit(X_train_lstm, y_train, epochs=100, batch_size=32, verbose=0)
 
     predictions = lstm_model.predict(X_test_lstm[:days_to_predict])
-    return predictions.flatten()
+    # Calculate MAE and Accuracy
+    mae = mean_absolute_error(y_test[:days_to_predict], predictions)
+    accuracy = 100 - (mae / y_test[:days_to_predict].mean() * 100)
 
+    return predictions.flatten(), mae, accuracy
+
+
+st.write("### Time Series Prediction")
 
 # Radio buttons to choose model (MLP or LSTM)
 model_choice = st.radio("Choose a model", ("MLP", "LSTM"))
@@ -119,15 +130,18 @@ branch_choice = st.radio("Choose a branch", ("A", "B", "C"))
 
 # Text input to choose how many days to predict (up to 7)
 days_to_predict = st.slider(
-    "How many days ahead do you want to predict?", min_value=1, max_value=7, value=3
-)
+    "How many days ahead do you want to predict?", min_value=1, 
+    max_value=7, value=3)
 
 # Predict button
-if st.button("Predict Sales"):
+if st.button("Predict Daily Sales"):
     if model_choice == "MLP":
-        predictions = mlp_model(branch_choice, days_to_predict)
+        predictions, mae, accuracy = mlp_model(branch_choice, days_to_predict)
     else:
-        predictions = lstm_model(branch_choice, days_to_predict)
+        predictions, mae, accuracy = lstm_model(branch_choice, days_to_predict)
 
     st.write(f"### Predictions for Branch {branch_choice}:")
     st.write(predictions)
+
+    st.write(f"Mean Average Error (MAE): {mae:.2f}")
+    st.write(f"Accuracy: {accuracy:.2f}%")
