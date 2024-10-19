@@ -61,7 +61,7 @@ pip install streamlit pandas scikit-learn matplotlib
 2. Execute o Streamlit:
 
    ```bash
-   streamlit run streamlit_dashboard.py
+   streamlit run branch_daily_dashboard.py
    ```
 
 3. O Streamlit abrirá automaticamente o navegador padrão com o dashboard.
