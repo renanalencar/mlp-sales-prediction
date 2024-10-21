@@ -1,113 +1,120 @@
-# Dashboard Interativo de Previsão de Vendas - Supermercado
+# Interactive Sales Forecast Dashboard - Supermarket
 
-Este projeto utiliza **Streamlit** para criar um dashboard interativo que realiza previsões de faturamento (vendas) de um supermercado utilizando um modelo de **Multi Layer Perceptron (MLP)**. O dashboard permite a visualização de dados históricos de vendas e faz previsões para os próximos três meses.
+This project uses **Streamlit** to create an interactive dashboard that performs revenue (sales) forecasts for a supermarket using a **Multi-Layer Perceptron (MLP)** model. The dashboard allows the visualization of historical sales data and makes predictions for the next three months.
 
-## Funcionalidades
+## Features
 
-- Exibe os dados históricos de vendas de um supermercado.
-- Visualiza as vendas agregadas por mês em um gráfico.
-- Realiza a previsão de vendas dos próximos três meses usando um modelo de Machine Learning (MLP).
-- Exibe o **Erro Absoluto Médio (MAE)** da previsão.
+- Displays historical sales data from a supermarket.
+- Visualizes aggregated sales per month in a chart.
+- Forecasts sales for the next three months using a Machine Learning model (MLP).
+- Shows the **Mean Absolute Error (MAE)** of the prediction.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - **Python 3.x**
-- **Streamlit**: Framework para a criação de dashboards interativos.
-- **Pandas**: Para manipulação e agregação dos dados.
-- **Matplotlib**: Para plotar gráficos das vendas mensais.
-- **Scikit-learn**: Para treinar o modelo MLP e realizar as previsões.
+- **Streamlit**: Framework for creating interactive dashboards.
+- **Pandas**: For data manipulation and aggregation.
+- **Matplotlib**: To plot monthly sales charts.
+- **Scikit-learn**: To train the MLP model and make predictions.
 
-## Instalação
+## Installation
 
-### Pré-requisitos
+### Prerequisites
 
-Certifique-se de ter o **Python** instalado em seu ambiente. Além disso, você precisará instalar as dependências listadas no arquivo `requirements.txt`.
+Make sure you have **Python** installed in your environment. Additionally, you will need to install the dependencies listed in the `requirements.txt` file.
 
-1. Clone o repositório:
-
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   ```
-
-2. Navegue até o diretório do projeto:
+1. Clone the repository:
 
    ```bash
-   cd seu-repositorio
+   git clone https://github.com/your-username/your-repository.git
    ```
 
-3. Crie um ambiente virtual (opcional, mas recomendado):
+2. Navigate to the project directory:
+
+   ```bash
+   cd your-repository
+   ```
+
+3. Create a virtual environment (optional, but recommended):
 
    ```bash
    python -m venv venv
-   source venv/bin/activate  # No Windows, use venv\Scripts\activate
+   source venv/bin/activate  # On Windows, use venv\Scripts\activate
    ```
 
-4. Instale as dependências:
+4. Install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-### Dependências
+### Dependencies
 
-Se o arquivo `requirements.txt` não estiver disponível, instale as dependências manualmente:
+If the `requirements.txt` file is not available, install the dependencies manually:
 
 ```bash
 pip install streamlit pandas scikit-learn matplotlib
 ```
 
-## Execução
+## Running the Project
 
-1. Certifique-se de que o arquivo CSV com os dados de vendas do supermercado esteja no mesmo diretório do projeto ou ajuste o caminho no código conforme necessário.
-2. Execute o Streamlit:
+1. Make sure the CSV file containing the supermarket's sales data is in the same directory as the project, or adjust the path in the code as needed.
+2. Run Streamlit:
 
    ```bash
    streamlit run branch_daily_dashboard.py
    ```
 
-3. O Streamlit abrirá automaticamente o navegador padrão com o dashboard.
+3. Streamlit will automatically open the default browser with the dashboard.
 
-## Estrutura do Projeto
+## Project Structure
 
 ```bash
-├── regression_mlp.py           # Arquivo principal contendo o código do MLP
-├── streamlit_dashboard.py      # Arquivo principal contendo o código do dashboard
-├── supermarket_sales.csv       # Arquivo CSV com os dados históricos de vendas
-├── README.md                   # Este arquivo README
-└── requirements.txt            # Lista de dependências do projeto
+.
+├── .env
+├── .data/
+│   └── supermarket_sales.csv                # CSV file with historical sales data
+├── notebooks/
+│   └── branch_daily_regression_mlp.ipynb    # Main file containing the MLP code
+├── scripts/
+│   └── branch_daily_regression_mlp.py       # Main file containing the MLP code
+├── branch_daily_dashboard.py                # Main file containing the dashboard code
+├── LICENSE
+├── README.md                                # This README file
+└── requirements.txt                         # Project dependencies list
 ```
 
-## Explicação do Código
+## Code Explanation
 
-O código principal está no arquivo `dashboard.py` e contém as seguintes seções:
+The main code is in the `branch_daily_dashboard.py` file and contains the following sections:
 
-- **Carregamento de dados**: Carrega os dados do arquivo CSV e os formata para o uso no dashboard.
-- **Visualização de vendas**: Gera um gráfico de vendas mensais, agregando as vendas por mês.
-- **Treinamento do Modelo**: Treina um modelo de MLP (Multi Layer Perceptron) utilizando as vendas mensais para prever os próximos três meses.
-- **Previsão de Vendas**: Realiza a previsão do faturamento para os próximos três meses e exibe os resultados no dashboard.
+- **Data Loading**: Loads data from the CSV file and formats it for use in the dashboard.
+- **Sales Visualization**: Generates a monthly sales chart by aggregating sales per month.
+- **Model Training**: Trains an MLP (Multi-Layer Perceptron) model using monthly sales to forecast the next three months.
+- **Sales Forecast**: Makes revenue predictions for the next three months and displays the results on the dashboard.
 
-## Contribuindo
+## Contributing
 
-Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades! Para contribuir:
+Feel free to contribute with improvements or new features! To contribute:
 
-1. Faça um fork do repositório.
-2. Crie uma nova branch para sua feature:
+1. Fork the repository.
+2. Create a new branch for your feature:
    ```bash
-   git checkout -b nova-feature
+   git checkout -b new-feature
    ```
-3. Faça commit de suas alterações:
+3. Commit your changes:
    ```bash
-   git commit -m 'Adicionar nova feature'
+   git commit -m 'Add new feature'
    ```
-4. Envie as alterações para o repositório remoto:
+4. Push the changes to the remote repository:
    ```bash
-   git push origin nova-feature
+   git push origin new-feature
    ```
-5. Abra um Pull Request.
+5. Open a Pull Request.
 
-## Licença
+## License
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
 
-## Contato
+## Contact
 
 - [@renanalencar](https://github.com/renanalencar)
