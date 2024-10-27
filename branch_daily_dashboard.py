@@ -122,3 +122,9 @@ if st.button("Predict Daily Sales"):
 
     st.write(f"Mean Average Error (MAE): {mae:.2f}")
     st.write(f"Accuracy: {accuracy:.2f}%")
+
+st.write("### Project Team:")
+st.write("- Beauty Chidinma Iromuanya")
+st.write("- Meenaj Modan")
+st.write("- Ogonna Silvia Otti")
+st.write("- Samuel Cezar Barros Moraes")
